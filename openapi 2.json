@@ -1,0 +1,167 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "2.0.0",
+    "title": "MyAPI",
+    "description": "Testing API",
+    "termsOfService": "terms",
+    "contact": {
+      "name": "Andrew",
+      "url": "http://site.com",
+      "email": "test@mail.com"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  },
+  "tags": [
+    {
+      "name": "Project",
+      "description": "Check it out"
+    }
+  ],
+  "paths": {
+    "/somepath/{parameterid}": {
+      "get": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "find smth",
+        "description": "Returns some data",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "query",
+            "description": "The name of user for singing in",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "description": "Password of user for singing in",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "parameterid",
+            "in": "path",
+            "description": "Provide ID",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "Give me info",
+        "description": "important thing",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Item that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          {
+            "name": "parameterid",
+            "in": "path",
+            "description": "Provide ID",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Record Successfully Added"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "Delete data by ID",
+        "description": "Try it out!",
+        "parameters": [
+          {
+            "name": "parameterid",
+            "in": "path",
+            "description": "ID of parameter",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Parameter not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ApiResponse": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": "integer",
+          "example": 5
+        },
+        "Name": {
+          "type": "string",
+          "example": "Petr"
+        },
+        "City": {
+          "type": "string",
+          "example": "Kyiv"
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

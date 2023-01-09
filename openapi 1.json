@@ -1,0 +1,142 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Myproj API",
+    "description": "Myproj Demo API",
+    "contact": {
+      "name": "TestBox",
+      "url": "https://mysite.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://prodapi.com",
+      "variables": {},
+      "description": "useful server"
+    },
+    {
+      "url": "https://devdapi.com",
+      "variables": {},
+      "description": "nice one"
+    }
+  ],
+  "paths": {
+    "/myproj": {
+      "description": "Myproj Resourse",
+      "get": {
+        "description": "Operation to catch some data.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "get data",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "word"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "ID": {
+                        "type": "integer",
+                        "example": 5
+                      },
+                      "Name": {
+                        "type": "string",
+                        "example": "Andrew"
+                      },
+                      "City": {
+                        "type": "string",
+                        "example": "Kyiv"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Operation to add some data",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ID": {
+                    "type": "integer",
+                    "example": 5
+                  },
+                  "Name": {
+                    "type": "string",
+                    "example": "Andrew"
+                  },
+                  "City": {
+                    "type": "string",
+                    "example": "Kyiv"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Record Successfully Added"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "myproj": {
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "integer",
+            "example": 5
+          },
+          "Name": {
+            "type": "string",
+            "example": "Andrew"
+          },
+          "City": {
+            "type": "string",
+            "example": "Kyiv"
+          }
+        }
+      },
+      "myprojs": {
+        "type": "array",
+        "items": {
+          "properties": {
+            "ID": {
+              "type": "integer",
+              "example": 5
+            },
+            "Name": {
+              "type": "string",
+              "example": "Andrew"
+            },
+            "City": {
+              "type": "string",
+              "example": "Kyiv"
+            }
+          }
+        }
+      }
+    }
+  }
+}
